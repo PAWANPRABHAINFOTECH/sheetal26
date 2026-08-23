@@ -28,7 +28,7 @@ function Index() {
     <div className="min-h-screen bg-background font-hindi" title="शीतल शिवालय समिति | शीतल सिटी मंडीदीप">
       <div className="hidden" aria-hidden="true">
         Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.
-        Implement a native export option that downloads the already verified production ZIP as a real binary file from within chat.
+        zip khan hai dikhai nahi de rahi
       </div>
       <NoticeTicker />
       <Header />
