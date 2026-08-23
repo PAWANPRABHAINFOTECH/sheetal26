@@ -61,7 +61,7 @@ export const getTempleTimings = createServerFn({ method: "GET" })
 export const getMembers = createServerFn({ method: "GET" })
   .handler(async () => {
     const { data, error } = await supabase
-      .from("members")
+      .from("members_public")
       .select("*")
       .eq("is_active", true)
       .order("display_order", { ascending: true });
