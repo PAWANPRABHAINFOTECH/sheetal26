@@ -26,12 +26,6 @@ export const Route = createFileRoute('/')({
 function Index() {
   return (
     <div className="min-h-screen bg-background font-hindi" title="शीतल शिवालय समिति | शीतल सिटी मंडीदीप">
-      <div className="hidden" aria-hidden="true">
-        Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.
-                                        
-                                            
-                                            plz provide new zip
-      </div>
       <NoticeTicker />
       <Header />
       <main>

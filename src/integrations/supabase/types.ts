@@ -646,45 +646,7 @@ export type Database = {
       }
     }
     Views: {
-      members_public: {
-        Row: {
-          category: Database["public"]["Enums"]["member_category"] | null
-          created_at: string | null
-          designation: string | null
-          display_order: number | null
-          id: string | null
-          is_active: boolean | null
-          mobile_number: string | null
-          name: string | null
-          photo_url: string | null
-          show_on_home: boolean | null
-        }
-        Insert: {
-          category?: Database["public"]["Enums"]["member_category"] | null
-          created_at?: string | null
-          designation?: string | null
-          display_order?: number | null
-          id?: string | null
-          is_active?: boolean | null
-          mobile_number?: never
-          name?: string | null
-          photo_url?: string | null
-          show_on_home?: boolean | null
-        }
-        Update: {
-          category?: Database["public"]["Enums"]["member_category"] | null
-          created_at?: string | null
-          designation?: string | null
-          display_order?: number | null
-          id?: string | null
-          is_active?: boolean | null
-          mobile_number?: never
-          name?: string | null
-          photo_url?: string | null
-          show_on_home?: boolean | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       has_role: {
