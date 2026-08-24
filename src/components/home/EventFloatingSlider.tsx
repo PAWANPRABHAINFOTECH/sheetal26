@@ -5,11 +5,17 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 
+type Advertisement = {
+  id: string;
+  image_url: string;
+  title: string | null;
+};
+
 export function EventFloatingSlider() {
   const { data: ads, isLoading } = useAdvertisements();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-  const [selectedAd, setSelectedAd] = useState<(typeof ads)[number] | null>(null);
+  const [selectedAd, setSelectedAd] = useState<Advertisement | null>(null);
 
   const activeAds = ads?.filter(ad => ad.is_active) || [];
 
