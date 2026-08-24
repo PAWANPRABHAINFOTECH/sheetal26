@@ -55,7 +55,7 @@ export function DonationModal() {
           </p>
         </div>
 
-        <div className="p-8 space-y-8">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-8 space-y-8">
           <div className="text-center space-y-4">
             <h3 className="font-hindi text-2xl font-bold text-primary underline decoration-secondary decoration-4 underline-offset-8">{t('donation.title')}</h3>
             <p className="font-hindi text-foreground/80 leading-relaxed italic">
