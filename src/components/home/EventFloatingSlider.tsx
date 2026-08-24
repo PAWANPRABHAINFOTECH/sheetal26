@@ -9,6 +9,7 @@ export function EventFloatingSlider() {
   const { data: ads, isLoading } = useAdvertisements();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const [selectedAd, setSelectedAd] = useState<(typeof ads)[number] | null>(null);
 
   const activeAds = ads?.filter(ad => ad.is_active) || [];
 
@@ -51,11 +52,11 @@ export function EventFloatingSlider() {
             <X className="h-3 w-3" />
           </Button>
 
-          <a
-            href={currentAd.button_url || "#"}
-            target={currentAd.button_url?.startsWith('http') ? "_blank" : "_self"}
-            rel="noopener noreferrer"
-            className="block h-full w-full"
+          <button
+            type="button"
+            className="block h-full w-full cursor-zoom-in text-left"
+            aria-label="पोस्टर बड़ा करके देखें"
+            onClick={() => setSelectedAd(currentAd)}
           >
             <img
               src={currentAd.image_url}
@@ -69,7 +70,7 @@ export function EventFloatingSlider() {
                 </p>
               </div>
             )}
-          </a>
+          </button>
         </motion.div>
       </AnimatePresence>
       <div className="mt-2 flex justify-center gap-1.5">

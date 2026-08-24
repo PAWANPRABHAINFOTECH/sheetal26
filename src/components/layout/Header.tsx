@@ -40,10 +40,10 @@ export function Header() {
             </div>
             <div className="flex min-w-0 flex-col">
               <span className="font-hindi whitespace-nowrap text-[clamp(0.72rem,3.5vw,1rem)] font-bold leading-tight text-primary md:text-xl">
-                शीतल शिवालय समिति
+                {settings?.site_name || ""}
               </span>
-              <span className="font-hindi hidden truncate text-[10px] text-foreground/70 sm:block md:text-xs">
-                शीतल सिटी, मंडीदीप, जिला-रायसेन (म.प्र.)
+              <span className="font-hindi max-w-full text-[10px] leading-tight text-foreground/70 md:text-xs">
+                {settings?.address || ""}
               </span>
             </div>
           </Link>
