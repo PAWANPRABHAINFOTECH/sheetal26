@@ -141,12 +141,12 @@ export function DonationModal() {
           )}
 
           <div className="bg-muted/30 p-6 rounded-3xl text-center space-y-2">
-            <p className="font-hindi text-sm font-bold text-primary">{t('donation.importance')}</p>
-            <p className="font-hindi text-xs text-foreground/70 leading-relaxed">
-              {t('donation.importanceMsg')}
-            </p>
-
+             <p className="font-hindi text-sm font-bold text-primary">{t('donation.importance')}</p>
+             <p className="font-hindi text-xs text-foreground/70 leading-relaxed">
+               {t('donation.importanceMsg')}
+             </p>
           </div>
+          <p className="border-t border-border pt-4 text-center text-[10px] font-semibold tracking-[0.16em] text-muted-foreground">PAWANPRABHA INFOTECH</p>
         </div>
       </DialogContent>
     </Dialog>
