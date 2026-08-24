@@ -173,8 +173,7 @@ export function DonationModal() {
                         <Copy className="h-4 w-4" />
                       </Button>
                     </div>
-                  </div>
-                  </div>
+                     </div>
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">शाखा</label>
                     <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_branch || "उपलब्ध नहीं"}</p>
