@@ -168,7 +168,7 @@ export function DonationModal() {
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.ifsc')}</label>
                     <div className="flex items-center justify-between">
-                      <p className="font-inter text-lg font-bold text-primary">{settings?.bank_ifsc || "---"}</p>
+                      <p className="font-inter text-lg font-bold text-primary">{settings?.bank_ifsc || "उपलब्ध नहीं"}</p>
                       <Button variant="ghost" size="sm" onClick={() => copyToClipboard(settings?.bank_ifsc || "")}>
                         <Copy className="h-4 w-4" />
                       </Button>
