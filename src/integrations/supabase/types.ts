@@ -416,6 +416,7 @@ export type Database = {
           updated_at: string | null
           upi_id: string | null
           whatsapp: string | null
+          whatsapp_auto_message: string | null
           youtube_channel_logo: string | null
           youtube_channel_name: string | null
           youtube_channel_url: string | null
@@ -451,6 +452,7 @@ export type Database = {
           updated_at?: string | null
           upi_id?: string | null
           whatsapp?: string | null
+          whatsapp_auto_message?: string | null
           youtube_channel_logo?: string | null
           youtube_channel_name?: string | null
           youtube_channel_url?: string | null
@@ -486,6 +488,7 @@ export type Database = {
           updated_at?: string | null
           upi_id?: string | null
           whatsapp?: string | null
+          whatsapp_auto_message?: string | null
           youtube_channel_logo?: string | null
           youtube_channel_name?: string | null
           youtube_channel_url?: string | null
@@ -643,7 +646,45 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      members_public: {
+        Row: {
+          category: Database["public"]["Enums"]["member_category"] | null
+          created_at: string | null
+          designation: string | null
+          display_order: number | null
+          id: string | null
+          is_active: boolean | null
+          mobile_number: string | null
+          name: string | null
+          photo_url: string | null
+          show_on_home: boolean | null
+        }
+        Insert: {
+          category?: Database["public"]["Enums"]["member_category"] | null
+          created_at?: string | null
+          designation?: string | null
+          display_order?: number | null
+          id?: string | null
+          is_active?: boolean | null
+          mobile_number?: never
+          name?: string | null
+          photo_url?: string | null
+          show_on_home?: boolean | null
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["member_category"] | null
+          created_at?: string | null
+          designation?: string | null
+          display_order?: number | null
+          id?: string | null
+          is_active?: boolean | null
+          mobile_number?: never
+          name?: string | null
+          photo_url?: string | null
+          show_on_home?: boolean | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
