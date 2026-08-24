@@ -118,11 +118,17 @@ export function DonationModal() {
           {activeTab === 'qr' ? (
             <div className="flex flex-col items-center gap-6 animate-in fade-in duration-500">
               <div className="bg-white dark:bg-primary/5 p-6 rounded-3xl shadow-2xl border-4 border-secondary/20">
-                <img 
-                  src={settings?.donation_qr_url || "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=UPI_ID_HERE"} 
-                  alt="Donation QR" 
-                  className="w-48 h-48 md:w-64 md:h-64 object-contain"
-                />
+                {settings?.donation_qr_url ? (
+                  <img
+                    src={settings.donation_qr_url}
+                    alt="Donation QR"
+                    className="w-48 h-48 md:w-64 md:h-64 object-contain"
+                  />
+                ) : (
+                  <p className="flex h-48 w-48 items-center justify-center text-center font-hindi text-sm text-muted-foreground md:h-64 md:w-64">
+                    QR कोड उपलब्ध नहीं है
+                  </p>
+                )}
               </div>
               <div className="text-center">
                 <p className="font-hindi text-lg font-bold text-primary mb-2">{t('donation.qrMethod')}</p>
