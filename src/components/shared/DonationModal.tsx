@@ -154,7 +154,7 @@ export function DonationModal() {
                   </div>
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.bankName')}</label>
-                    <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_name || "---"}</p>
+                    <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_name || "उपलब्ध नहीं"}</p>
                   </div>
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.accountNo')}</label>
