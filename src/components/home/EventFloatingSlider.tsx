@@ -20,6 +20,25 @@ export function EventFloatingSlider() {
   const activeAds = ads?.filter(ad => ad.is_active) || [];
 
   useEffect(() => {
+    const dismissedAt = window.localStorage.getItem("poster-dismissed-at");
+    if (!dismissedAt) return;
+
+    const remaining = Math.max(0, 40000 - (Date.now() - Number(dismissedAt)));
+    if (remaining === 0) {
+      window.localStorage.removeItem("poster-dismissed-at");
+      return;
+    }
+
+    setIsVisible(false);
+    const timer = window.setTimeout(() => {
+      window.localStorage.removeItem("poster-dismissed-at");
+      setIsVisible(true);
+    }, remaining);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     if (activeAds.length <= 1) return;
 
     const timer = setInterval(() => {
