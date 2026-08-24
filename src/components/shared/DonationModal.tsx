@@ -118,11 +118,17 @@ export function DonationModal() {
           {activeTab === 'qr' ? (
             <div className="flex flex-col items-center gap-6 animate-in fade-in duration-500">
               <div className="bg-white dark:bg-primary/5 p-6 rounded-3xl shadow-2xl border-4 border-secondary/20">
-                <img 
-                  src={settings?.donation_qr_url || "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=UPI_ID_HERE"} 
-                  alt="Donation QR" 
-                  className="w-48 h-48 md:w-64 md:h-64 object-contain"
-                />
+                {settings?.donation_qr_url ? (
+                  <img
+                    src={settings.donation_qr_url}
+                    alt="Donation QR"
+                    className="w-48 h-48 md:w-64 md:h-64 object-contain"
+                  />
+                ) : (
+                  <p className="flex h-48 w-48 items-center justify-center text-center font-hindi text-sm text-muted-foreground md:h-64 md:w-64">
+                    QR कोड उपलब्ध नहीं है
+                  </p>
+                )}
               </div>
               <div className="text-center">
                 <p className="font-hindi text-lg font-bold text-primary mb-2">{t('donation.qrMethod')}</p>
@@ -144,16 +150,16 @@ export function DonationModal() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.holder')}</label>
-                    <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_account_name || "शीतल शिवालय समिति"}</p>
+                    <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_account_name || "उपलब्ध नहीं"}</p>
                   </div>
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.bankName')}</label>
-                    <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_name || "---"}</p>
+                    <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_name || "उपलब्ध नहीं"}</p>
                   </div>
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.accountNo')}</label>
                     <div className="flex items-center justify-between">
-                      <p className="font-inter text-lg font-bold text-primary tracking-wider">{settings?.bank_account_number || "---"}</p>
+                      <p className="font-inter text-lg font-bold text-primary tracking-wider">{settings?.bank_account_number || "उपलब्ध नहीं"}</p>
                       <Button variant="ghost" size="sm" onClick={() => copyToClipboard(settings?.bank_account_number || "")}>
                         <Copy className="h-4 w-4" />
                       </Button>
@@ -162,15 +168,19 @@ export function DonationModal() {
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.ifsc')}</label>
                     <div className="flex items-center justify-between">
-                      <p className="font-inter text-lg font-bold text-primary">{settings?.bank_ifsc || "---"}</p>
+                      <p className="font-inter text-lg font-bold text-primary">{settings?.bank_ifsc || "उपलब्ध नहीं"}</p>
                       <Button variant="ghost" size="sm" onClick={() => copyToClipboard(settings?.bank_ifsc || "")}>
                         <Copy className="h-4 w-4" />
                       </Button>
                     </div>
+                     </div>
+                  <div>
+                    <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">शाखा</label>
+                    <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_branch || "उपलब्ध नहीं"}</p>
                   </div>
                 </div>
               </div>
-            </div>
+               </div>
           )}
 
           <div className="bg-muted/30 p-6 rounded-3xl text-center space-y-2">
