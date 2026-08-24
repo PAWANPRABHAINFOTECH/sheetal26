@@ -28,10 +28,10 @@ export function Header() {
   return (
     <header className="z-50 w-full border-b border-primary/10 bg-background">
       <div className="container mx-auto px-4 py-2 lg:py-3">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 lg:flex lg:gap-6">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 lg:flex lg:gap-6">
           {/* Logo & Branding */}
-          <Link to="/" className="flex min-w-0 items-center gap-3 lg:shrink-0">
-            <div className="aspect-square h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-secondary shadow-md md:h-20 md:w-20 bg-white">
+          <Link to="/" className="flex min-w-0 items-center gap-2 lg:shrink-0 lg:gap-3">
+            <div className="aspect-square h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-secondary bg-white shadow-md md:h-20 md:w-20">
               <img
                 src={logoAsset.url}
                 alt="Shital Shivalaya Samiti Logo"
@@ -39,10 +39,10 @@ export function Header() {
               />
             </div>
             <div className="flex min-w-0 flex-col">
-              <span className="font-hindi truncate text-base font-bold leading-tight text-primary md:text-xl">
+              <span className="font-hindi whitespace-nowrap text-[clamp(0.72rem,3.5vw,1rem)] font-bold leading-tight text-primary md:text-xl">
                 शीतल शिवालय समिति
               </span>
-              <span className="font-hindi truncate text-[10px] text-foreground/70 md:text-xs">
+              <span className="font-hindi hidden truncate text-[10px] text-foreground/70 sm:block md:text-xs">
                 शीतल सिटी, मंडीदीप, जिला-रायसेन (म.प्र.)
               </span>
             </div>
