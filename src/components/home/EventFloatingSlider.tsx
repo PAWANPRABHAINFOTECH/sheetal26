@@ -75,11 +75,12 @@ export function EventFloatingSlider() {
             variant="secondary"
             size="icon"
             className="absolute right-1 top-1 z-50 h-6 w-6 rounded-full bg-background/50 opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setIsVisible(false);
-            }}
+             onClick={(e) => {
+               e.preventDefault();
+               e.stopPropagation();
+               window.localStorage.setItem("poster-dismissed-at", String(Date.now()));
+               setIsVisible(false);
+             }}
           >
             <X className="h-3 w-3" />
           </Button>
