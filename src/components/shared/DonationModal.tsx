@@ -159,7 +159,7 @@ export function DonationModal() {
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.accountNo')}</label>
                     <div className="flex items-center justify-between">
-                      <p className="font-inter text-lg font-bold text-primary tracking-wider">{settings?.bank_account_number || "---"}</p>
+                      <p className="font-inter text-lg font-bold text-primary tracking-wider">{settings?.bank_account_number || "उपलब्ध नहीं"}</p>
                       <Button variant="ghost" size="sm" onClick={() => copyToClipboard(settings?.bank_account_number || "")}>
                         <Copy className="h-4 w-4" />
                       </Button>
