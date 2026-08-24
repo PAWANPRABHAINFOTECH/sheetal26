@@ -180,8 +180,7 @@ export function DonationModal() {
                   </div>
                 </div>
               </div>
-              </div>
-            </div>
+               </div>
           )}
 
           <div className="bg-muted/30 p-6 rounded-3xl text-center space-y-2">
