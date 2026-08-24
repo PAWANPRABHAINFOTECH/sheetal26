@@ -150,7 +150,7 @@ export function DonationModal() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.holder')}</label>
-                    <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_account_name || "शीतल शिवालय समिति"}</p>
+                    <p className="font-hindi text-lg font-bold text-primary">{settings?.bank_account_name || "उपलब्ध नहीं"}</p>
                   </div>
                   <div>
                     <label className="font-hindi text-xs text-muted-foreground uppercase tracking-widest">{t('donation.bankName')}</label>
