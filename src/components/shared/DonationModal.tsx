@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import logoAsset from "@/assets/logo.png.asset.json";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Copy, Check, QrCode, Building2, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
@@ -24,15 +24,38 @@ export function DonationModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'qr' | 'bank'>('qr');
   const [copied, setCopied] = useState(false);
+  const historyEntryAdded = useRef(false);
   const { data: settings } = useSiteSettings();
   const { t } = useLanguage();
 
-
   useEffect(() => {
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => {
+      if (historyEntryAdded.current) return;
+      window.history.pushState({ donationModal: true }, "");
+      historyEntryAdded.current = true;
+      setIsOpen(true);
+    };
+    const handlePopState = () => {
+      if (!historyEntryAdded.current) return;
+      historyEntryAdded.current = false;
+      setIsOpen(false);
+    };
     window.addEventListener("open-donation-modal", handleOpen);
-    return () => window.removeEventListener("open-donation-modal", handleOpen);
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("open-donation-modal", handleOpen);
+      window.removeEventListener("popstate", handlePopState);
+    };
   }, []);
+
+  const closeModal = () => {
+    if (historyEntryAdded.current) {
+      historyEntryAdded.current = false;
+      window.history.back();
+      return;
+    }
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     if (!isOpen) return;
@@ -50,7 +73,7 @@ export function DonationModal() {
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} onOpenChange={(open) => (open ? setIsOpen(true) : closeModal())}>
       <DialogContent className="max-w-2xl w-[calc(100%-1rem)] max-h-[calc(100dvh-1rem)] sm:max-h-[90vh] overflow-hidden rounded-3xl p-0 border-none bg-background">
         <div className="flex max-h-[calc(100dvh-1rem)] flex-col overflow-hidden sm:max-h-[90vh]">
         <div className="shrink-0 bg-primary text-primary-foreground p-6 sm:p-8 text-center relative overflow-hidden">
