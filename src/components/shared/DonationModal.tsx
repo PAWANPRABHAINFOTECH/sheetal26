@@ -147,7 +147,19 @@ export function DonationModal() {
                {t('donation.importanceMsg')}
              </p>
           </div>
-          <p className="border-t border-border pt-4 text-center text-[10px] font-semibold tracking-[0.16em] text-muted-foreground">PAWANPRABHA INFOTECH</p>
+           <footer className="border-t border-border pt-4 text-center text-xs font-semibold tracking-[0.08em] text-muted-foreground">
+             <p>DESIGNED &amp; DEVELOPED BY PAWANPRABHA INFOTECH</p>
+             <a
+               href="https://wa.me/91626201333?text=नमस्कार%2C%20शीतल%20शिवालय%20समिति"
+               target="_blank"
+               rel="noreferrer"
+               className="mt-2 inline-flex max-w-full flex-wrap items-center justify-center gap-2 text-green-600 hover:underline"
+             >
+               <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+               <span>626201333</span>
+             </a>
+           </footer>
+        </div>
         </div>
       </DialogContent>
     </Dialog>
