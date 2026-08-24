@@ -8,7 +8,7 @@ export const claimFirstAdmin = createServerFn({ method: "POST" })
     const { userId } = context;
 
     // Call the private RPC function using the admin client
-    const { data, error } = await supabaseAdmin.rpc('claim_first_admin' as any, {
+    const { data, error } = await (supabaseAdmin as any).schema('private').rpc('claim_first_admin', {
       _user_id: userId
     });
 
