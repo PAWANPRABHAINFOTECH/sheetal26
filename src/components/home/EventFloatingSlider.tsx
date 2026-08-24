@@ -29,6 +29,13 @@ export function EventFloatingSlider() {
     return () => clearInterval(timer);
   }, [activeAds.length]);
 
+  useEffect(() => {
+    document.body.style.overflow = selectedAd ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedAd]);
+
   if (isLoading || activeAds.length === 0 || !isVisible) return null;
 
   const currentAd = activeAds[currentIndex];
