@@ -97,6 +97,31 @@ export function EventFloatingSlider() {
           />
         ))}
       </div>
+      {selectedAd && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="पोस्टर"
+          onClick={() => setSelectedAd(null)}
+        >
+          <Button
+            variant="secondary"
+            size="icon"
+            className="absolute right-4 top-4 z-10 rounded-full"
+            aria-label="बंद करें"
+            onClick={() => setSelectedAd(null)}
+          >
+            <X className="h-5 w-5" />
+          </Button>
+          <img
+            src={selectedAd.image_url}
+            alt={selectedAd.title || "Event"}
+            className="max-h-[90vh] max-w-full object-contain"
+            onClick={(event) => event.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }
