@@ -80,6 +80,10 @@ export function EventFloatingSlider() {
                e.stopPropagation();
                window.localStorage.setItem("poster-dismissed-at", String(Date.now()));
                setIsVisible(false);
+               window.setTimeout(() => {
+                 window.localStorage.removeItem("poster-dismissed-at");
+                 setIsVisible(true);
+               }, 40000);
              }}
           >
             <X className="h-3 w-3" />
