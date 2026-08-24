@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import logoAsset from "@/assets/logo.png.asset.json";
 import { useState, useEffect } from "react";
-import { Copy, Check, QrCode, Building2 } from "lucide-react";
+import { Copy, Check, QrCode, Building2, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 
@@ -34,6 +34,15 @@ export function DonationModal() {
     return () => window.removeEventListener("open-donation-modal", handleOpen);
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
+
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -42,8 +51,9 @@ export function DonationModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-2xl sm:max-h-[90vh] overflow-y-auto rounded-3xl p-0 border-none bg-background">
-        <div className="bg-primary text-primary-foreground p-8 text-center relative overflow-hidden">
+      <DialogContent className="max-w-2xl w-[calc(100%-1rem)] max-h-[calc(100dvh-1rem)] sm:max-h-[90vh] overflow-hidden rounded-3xl p-0 border-none bg-background">
+        <div className="flex max-h-[calc(100dvh-1rem)] flex-col overflow-hidden sm:max-h-[90vh]">
+        <div className="shrink-0 bg-primary text-primary-foreground p-6 sm:p-8 text-center relative overflow-hidden">
           {/* Decorative Pattern */}
           <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
           
@@ -54,7 +64,7 @@ export function DonationModal() {
           </p>
         </div>
 
-        <div className="p-8 space-y-8">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-8 space-y-8">
           <div className="text-center space-y-4">
             <h3 className="font-hindi text-2xl font-bold text-primary underline decoration-secondary decoration-4 underline-offset-8">{t('donation.title')}</h3>
             <p className="font-hindi text-foreground/80 leading-relaxed italic">
@@ -146,7 +156,19 @@ export function DonationModal() {
                {t('donation.importanceMsg')}
              </p>
           </div>
-          <p className="border-t border-border pt-4 text-center text-[10px] font-semibold tracking-[0.16em] text-muted-foreground">PAWANPRABHA INFOTECH</p>
+           <footer className="border-t border-border pt-4 text-center text-xs font-semibold tracking-[0.08em] text-muted-foreground">
+             <p>DESIGNED &amp; DEVELOPED BY PAWANPRABHA INFOTECH</p>
+             <a
+               href="https://wa.me/91626201333?text=नमस्कार%2C%20शीतल%20शिवालय%20समिति"
+               target="_blank"
+               rel="noreferrer"
+               className="mt-2 inline-flex max-w-full flex-wrap items-center justify-center gap-2 text-green-600 hover:underline"
+             >
+               <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+               <span>626201333</span>
+             </a>
+           </footer>
+        </div>
         </div>
       </DialogContent>
     </Dialog>
