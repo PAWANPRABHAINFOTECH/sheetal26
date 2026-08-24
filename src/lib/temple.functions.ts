@@ -67,17 +67,7 @@ export const getMembers = createServerFn({ method: "GET" })
       .order("display_order", { ascending: true });
     
     if (error) throw error;
-    
-    // Privacy filter: Mask mobile number unless show_mobile_number is true
-    // In server function, we don't easily have auth context from just 'supabase' client 
-    // without using context.supabase (if middleware were used).
-    // However, for this project, we'll implement the logic directly if possible
-    // or rely on the RLS/View if we were using context.
-    
-    return data.map(member => ({
-      ...member,
-      mobile_number: member.show_mobile_number ? member.mobile_number : null
-    }));
+    return data;
   });
 
 export const getNews = createServerFn({ method: "GET" })
