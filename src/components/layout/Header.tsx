@@ -28,10 +28,10 @@ export function Header() {
   return (
     <header className="z-50 w-full border-b border-primary/10 bg-background">
       <div className="container mx-auto px-4 py-2 lg:py-3">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 lg:flex lg:gap-6">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 lg:flex lg:gap-6">
           {/* Logo & Branding */}
-          <Link to="/" className="flex min-w-0 items-center gap-3 lg:shrink-0">
-            <div className="aspect-square h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-secondary shadow-md md:h-20 md:w-20 bg-white">
+          <Link to="/" className="flex min-w-0 items-center gap-2 lg:shrink-0 lg:gap-3">
+            <div className="aspect-square h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-secondary bg-white shadow-md md:h-20 md:w-20">
               <img
                 src={logoAsset.url}
                 alt="Shital Shivalaya Samiti Logo"
@@ -39,10 +39,10 @@ export function Header() {
               />
             </div>
             <div className="flex min-w-0 flex-col">
-              <span className="font-hindi truncate text-base font-bold leading-tight text-primary md:text-xl">
+              <span className="font-hindi whitespace-nowrap text-[clamp(0.72rem,3.5vw,1rem)] font-bold leading-tight text-primary md:text-xl">
                 शीतल शिवालय समिति
               </span>
-              <span className="font-hindi truncate text-[10px] text-foreground/70 md:text-xs">
+              <span className="font-hindi hidden truncate text-[10px] text-foreground/70 sm:block md:text-xs">
                 शीतल सिटी, मंडीदीप, जिला-रायसेन (म.प्र.)
               </span>
             </div>
@@ -111,8 +111,8 @@ export function Header() {
               )}
             </div>
 
-            <div className="flex items-center gap-1 rounded-full border border-primary/20 bg-primary/5 px-1.5 py-0.5 shadow-sm">
-              <Languages className="h-3 w-3 text-primary shrink-0" />
+            <div className="hidden items-center gap-1 rounded-full border border-primary/20 bg-primary/5 px-1.5 py-0.5 shadow-sm lg:flex">
+              <Languages className="h-3 w-3 shrink-0 text-primary" />
               <button
                 onClick={() => setLanguage('hi')}
                 className={`text-[10px] font-bold transition-colors ${language === 'hi' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}
@@ -130,14 +130,10 @@ export function Header() {
             
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="flex items-center justify-center rounded-full border border-primary/20 bg-primary/5 p-1.5 shadow-sm text-primary transition-colors hover:bg-primary/10"
+              className="hidden items-center justify-center rounded-full border border-primary/20 bg-primary/5 p-1.5 text-primary shadow-sm transition-colors hover:bg-primary/10 lg:flex"
               title={theme === "dark" ? "Light Mode" : "Dark Mode"}
             >
-              {theme === "dark" ? (
-                <Sun className="h-3.5 w-3.5" />
-              ) : (
-                <Moon className="h-3.5 w-3.5" />
-              )}
+              {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
             </button>
 
             <Button
@@ -178,6 +174,19 @@ export function Header() {
             ))}
 
             <div className="mt-4 flex flex-wrap items-center gap-3 border-t pt-4">
+              <div className="flex items-center gap-1 rounded-full border border-primary/20 bg-primary/5 px-2 py-1 shadow-sm">
+                <Languages className="h-3.5 w-3.5 shrink-0 text-primary" />
+                <button onClick={() => setLanguage('hi')} className={`text-xs font-bold ${language === 'hi' ? 'text-primary' : 'text-muted-foreground'}`}>हिन्दी</button>
+                <span className="text-primary/30">|</span>
+                <button onClick={() => setLanguage('en')} className={`text-xs font-bold ${language === 'en' ? 'text-primary' : 'text-muted-foreground'}`}>EN</button>
+              </div>
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center justify-center rounded-full border border-primary/20 bg-primary/5 p-2 text-primary shadow-sm"
+                title={theme === "dark" ? "Light Mode" : "Dark Mode"}
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
               {settings?.phone && (
                 <a href={`tel:${settings.phone}`} aria-label="Call" className="rounded-full bg-primary/5 p-3 text-primary">
                   <Phone className="h-5 w-5" />
