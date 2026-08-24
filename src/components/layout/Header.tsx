@@ -174,6 +174,19 @@ export function Header() {
             ))}
 
             <div className="mt-4 flex flex-wrap items-center gap-3 border-t pt-4">
+              <div className="flex items-center gap-1 rounded-full border border-primary/20 bg-primary/5 px-2 py-1 shadow-sm">
+                <Languages className="h-3.5 w-3.5 shrink-0 text-primary" />
+                <button onClick={() => setLanguage('hi')} className={`text-xs font-bold ${language === 'hi' ? 'text-primary' : 'text-muted-foreground'}`}>हिन्दी</button>
+                <span className="text-primary/30">|</span>
+                <button onClick={() => setLanguage('en')} className={`text-xs font-bold ${language === 'en' ? 'text-primary' : 'text-muted-foreground'}`}>EN</button>
+              </div>
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center justify-center rounded-full border border-primary/20 bg-primary/5 p-2 text-primary shadow-sm"
+                title={theme === "dark" ? "Light Mode" : "Dark Mode"}
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
               {settings?.phone && (
                 <a href={`tel:${settings.phone}`} aria-label="Call" className="rounded-full bg-primary/5 p-3 text-primary">
                   <Phone className="h-5 w-5" />
