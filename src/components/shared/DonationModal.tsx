@@ -42,8 +42,9 @@ export function DonationModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-2xl sm:max-h-[90vh] overflow-y-auto rounded-3xl p-0 border-none bg-background">
-        <div className="bg-primary text-primary-foreground p-8 text-center relative overflow-hidden">
+      <DialogContent className="max-w-2xl w-[calc(100%-1rem)] max-h-[calc(100dvh-1rem)] sm:max-h-[90vh] overflow-hidden rounded-3xl p-0 border-none bg-background">
+        <div className="flex max-h-[calc(100dvh-1rem)] flex-col overflow-hidden sm:max-h-[90vh]">
+        <div className="shrink-0 bg-primary text-primary-foreground p-6 sm:p-8 text-center relative overflow-hidden">
           {/* Decorative Pattern */}
           <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
           
