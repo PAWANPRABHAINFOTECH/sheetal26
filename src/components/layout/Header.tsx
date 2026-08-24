@@ -111,8 +111,8 @@ export function Header() {
               )}
             </div>
 
-            <div className="flex items-center gap-1 rounded-full border border-primary/20 bg-primary/5 px-1.5 py-0.5 shadow-sm">
-              <Languages className="h-3 w-3 text-primary shrink-0" />
+            <div className="hidden items-center gap-1 rounded-full border border-primary/20 bg-primary/5 px-1.5 py-0.5 shadow-sm lg:flex">
+              <Languages className="h-3 w-3 shrink-0 text-primary" />
               <button
                 onClick={() => setLanguage('hi')}
                 className={`text-[10px] font-bold transition-colors ${language === 'hi' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}
@@ -130,14 +130,10 @@ export function Header() {
             
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="flex items-center justify-center rounded-full border border-primary/20 bg-primary/5 p-1.5 shadow-sm text-primary transition-colors hover:bg-primary/10"
+              className="hidden items-center justify-center rounded-full border border-primary/20 bg-primary/5 p-1.5 text-primary shadow-sm transition-colors hover:bg-primary/10 lg:flex"
               title={theme === "dark" ? "Light Mode" : "Dark Mode"}
             >
-              {theme === "dark" ? (
-                <Sun className="h-3.5 w-3.5" />
-              ) : (
-                <Moon className="h-3.5 w-3.5" />
-              )}
+              {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
             </button>
 
             <Button
